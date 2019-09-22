@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  currentUser: any;
   loginForm:FormGroup;
-  constructor(private fb:FormBuilder,  private router: Router ) { }
+  constructor(private fb:FormBuilder,  private router: Router ,
+    private authService: AuthService) { }
   ngOnInit() {
     this.loginForm = this.fb.group({
       username:['',Validators.required],
@@ -21,8 +24,21 @@ export class LoginPage implements OnInit {
     });
   }
   login() {
-   // console.log(this.loginService.isLoggedIn);
-    this.router.navigateByUrl('/tabs/dashboard');
+    console.log("sss");
+    const user = { ...this.loginForm.value }; // Object.assign({}, this.user, loginForm.value);
+    this.authService.login(user.username, user.password).subscribe(data => {
+      if (data) {
+        this.currentUser = data;
+        console.log(this.currentUser);
+        const role = this.currentUser.roles;
+
+        if (role === 'ADMIN') {
+          this.router.navigateByUrl('/tabs/dashboard');
+        } else if (role === 'USER') {
+          this.router.navigateByUrl('/tabs/user/dashboard');
+        }
+      }
+    });
   }
 
 }

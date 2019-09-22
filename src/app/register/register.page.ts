@@ -110,11 +110,12 @@ export class RegisterPage implements OnInit {
   register(registerForm: FormGroup) {
     if (registerForm.valid) {
       this.user = Object.assign({}, this.user, registerForm.value);
+      this.user.roles = 'ADMIN';
       this.authService.register(this.user).subscribe(
         (data) => {
           console.log('register: ', data);
           if (data) {
-            this.router.navigateByUrl('/app/dashboard');
+            this.router.navigateByUrl('/tabs/dashboard');
           }
         },
         error => {
