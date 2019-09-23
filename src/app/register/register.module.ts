@@ -6,8 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { RegisterPage } from './register.page';
-import { MatButtonModule, MatFormFieldModule, MatInputModule,
-  MatSelectModule, MatRadioModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+
 
 const routes: Routes = [
   {
@@ -22,9 +21,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule,
-    MatRadioModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule
+    ReactiveFormsModule
   ],
   declarations: [RegisterPage]
 })

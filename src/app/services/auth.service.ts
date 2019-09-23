@@ -1,11 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { StorageService } from './storage.service';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { environment } from 'src/environments/environment';
 import { of, from } from 'rxjs';
-
 
 const ACCESS_TOKEN = 'authentication-token';
 
@@ -24,6 +21,7 @@ export class AuthService {
       this.isAuthenticated();
     });
   }
+
   getCurrentUser() {
     return of(this.loggedInUser);
   }
@@ -45,6 +43,8 @@ export class AuthService {
 
   login(username: string, password: string) {
     this.storage.get(username).then(data => {
+      console.log('username: ', username);
+      console.log('password', password);
       if (data) {
         console.log(data);
         if (data.username === username && data.passwordGroup.password === password) {
@@ -63,18 +63,6 @@ export class AuthService {
       this.isLoggedIn = false;
       console.log('Error logging in ', error);
     });
-
-    // if (username.toLowerCase() === 'admin' && password === 'admin') {
-    //   user = { username, roles: 'ADMIN' };
-    // } else if (username.toLowerCase() === 'user' && password === 'user') {
-    //   user = { username, roles: 'USER' };
-    // }
-
-    // this.isLoggedIn = true;
-    // this.loggedInUser = user;
-
-    // // Normally you would store e.g. JWT
-    // this.storage.set('token', ACCESS_TOKEN);
 
     // Normally you would have a real user object at this point
     return of(this.loggedInUser);

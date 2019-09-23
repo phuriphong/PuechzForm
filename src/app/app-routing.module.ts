@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './tabs/tabs.page';
 
 const routes: Routes = [
   {
-    path: ''
-    ,redirectTo:'login',pathMatch:'full'
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
-  { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  {
+    path: 'login', loadChildren: './login/login.module#LoginPageModule'
+  },
+  {
+    path: 'app',
+    loadChildren: './tabs/tabs.module#TabsPageModule'
+  },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
   { path: 'user-dashboard', loadChildren: './user-dashboard/user-dashboard.module#UserDashboardPageModule' },
-  // { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
-  // { path: 'quotations', loadChildren: './quotations/quotations.module#QuotationsPageModule' },
-  // { path: 'invoices', loadChildren: './invoices/invoices.module#InvoicesPageModule' },
-  // { path: 'customers', loadChildren: './customers/customers.module#CustomersPageModule' }
+  { path: 'quotation-create', loadChildren: './quotations/quotation-create/quotation-create.module#QuotationCreatePageModule' },
+  { path: 'quotation-view', loadChildren: './quotations/quotation-view/quotation-view.module#QuotationViewPageModule' },
+  { path: 'quotation-list', loadChildren: './quotations/quotation-list/quotation-list.module#QuotationListPageModule' }
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes)

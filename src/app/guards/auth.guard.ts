@@ -1,17 +1,35 @@
+import { AuthService } from './../services/auth.service';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  CanActivate,
+  Router
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
 import { map, take } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements  CanActivate
-{
-  constructor(private authService : AuthService,    private router: Router,
-    private alert: AlertController){}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+export class AuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private alert: AlertController
+  ) {}
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
+
     if (route.url.toString().indexOf('/dashboard') > 0) {
       const expectedRole = route.data.roles;
       console.log(route.data.roles);
@@ -40,6 +58,7 @@ export class AuthGuard implements  CanActivate
     this.showAlert();
     return this.router.parseUrl('/login');
   }
+
   async showAlert() {
     const alert = await this.alert.create({
       header: 'Unauthorized',

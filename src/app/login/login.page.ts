@@ -1,7 +1,7 @@
+import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +9,23 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
+  loginForm: FormGroup;
   currentUser: any;
-  loginForm:FormGroup;
-  constructor(private fb:FormBuilder,  private router: Router ,
-    private authService: AuthService) { }
+
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private authService: AuthService) { }
+
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username:['',Validators.required],
-      password:['',Validators.compose([
-        Validators.required,
-        //Validators.minLength(8),
-        //Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
-      ])]
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
-  login() {
-    console.log("sss");
-    const user = { ...this.loginForm.value }; // Object.assign({}, this.user, loginForm.value);
+
+  login(loginForm: FormGroup) {
+    const user = { ...loginForm.value }; // Object.assign({}, this.user, loginForm.value);
     this.authService.login(user.username, user.password).subscribe(data => {
       if (data) {
         this.currentUser = data;
@@ -33,12 +33,11 @@ export class LoginPage implements OnInit {
         const role = this.currentUser.roles;
 
         if (role === 'ADMIN') {
-          this.router.navigateByUrl('/tabs/dashboard');
+          this.router.navigateByUrl('/app/dashboard');
         } else if (role === 'USER') {
-          this.router.navigateByUrl('/tabs/user/dashboard');
+          this.router.navigateByUrl('/app/user/dashboard');
         }
       }
     });
   }
-
 }

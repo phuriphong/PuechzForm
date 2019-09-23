@@ -10,9 +10,7 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-function passwordMatcher(
-  c: AbstractControl
-): { [key: string]: boolean } | null {
+function passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {
   const passwordControl = c.get('password');
   const confirmPasswordControl = c.get('confirmPassword');
 
@@ -106,16 +104,18 @@ export class RegisterPage implements OnInit {
       consent: ['', Validators.pattern('true')]
     });
   }
-  
+
   register(registerForm: FormGroup) {
     if (registerForm.valid) {
+
       this.user = Object.assign({}, this.user, registerForm.value);
       this.user.roles = 'ADMIN';
+
       this.authService.register(this.user).subscribe(
         (data) => {
           console.log('register: ', data);
           if (data) {
-            this.router.navigateByUrl('/tabs/dashboard');
+            this.router.navigateByUrl('/app/dashboard');
           }
         },
         error => {
