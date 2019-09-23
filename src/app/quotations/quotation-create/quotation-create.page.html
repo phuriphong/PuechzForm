@@ -12,14 +12,15 @@
     <ion-item>
       <ion-label position="floating" color="primary">Quotation No.</ion-label>
       <ion-input type="text" formControlName="quotationNo"></ion-input>
-      <div class="validation-errors" *ngIf="(quotationForm.controls['quotationNo'].touched || 
+
+    </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['quotationNo'].touched || 
                                           quotationForm.controls['quotationNo'].dirty) && 
                                           !quotationForm.controls['quotationNo'].valid">
       <div class="error-message" *ngIf="quotationForm.controls['quotationNo'].errors?.required">
         Please enter Quotation No
       </div>
     </div>
-    </ion-item>
     <ion-item>
       <ion-label position="floating" color="primary">Customer</ion-label>
       <ion-select formControlName="customer">
@@ -30,37 +31,42 @@
         <ion-select-option value="4">Customer-4</ion-select-option>
         <ion-select-option value="5">Customer-5</ion-select-option>
       </ion-select>
-      <div class="validation-errors" *ngIf="(quotationForm.controls['customer'].touched || 
-      quotationForm.controls['customer'].dirty) && 
-     (!quotationForm.controls['customer'].valid || quotationForm.controls['customer'].value)">
-<div class="error-message" *ngIf="quotationForm.controls['customer'].errors?.required || quotationForm.controls['customer'].value==0">
-Please Select customer
-</div>
-</div>
+
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['customer'].touched || 
+      quotationForm.controls['customer'].dirty) && 
+     (!quotationForm.controls['customer'].valid || quotationForm.controls['customer'].value==0)">
+      <div class="error-message"
+        *ngIf="quotationForm.controls['customer'].errors?.required || quotationForm.controls['customer'].value==0">
+        Please Select customer
+      </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">Quotation Date</ion-label>
       <ion-datetime formControlName="quotationDate" displayFormat="DD/MM/YYYY" min="1994-03-14" max="2012-12-09">
-        <div class="validation-errors" *ngIf="(quotationForm.controls['quotationDate'].touched || 
-        quotationForm.controls['quotationDate'].dirty) && 
-        !quotationForm.controls['quotationDate'].valid">
-<div class="error-message" *ngIf="quotationForm.controls['quotationDate'].errors?.required">
-Please enter Quotation Date
-</div>
-</div>
+
       </ion-datetime>
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['quotationDate'].touched || 
+    quotationForm.controls['quotationDate'].dirty) && 
+    !quotationForm.controls['quotationDate'].valid">
+      <div class="error-message" *ngIf="quotationForm.controls['quotationDate'].errors?.required">
+        Please enter Quotation Date
+      </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">Expire Date</ion-label>
       <ion-datetime formControlName="expireDate" displayFormat="DD/MM/YYYY"></ion-datetime>
-      <div class="validation-errors" *ngIf="(quotationForm.controls['expireDate'].touched || 
-      quotationForm.controls['expireDate'].dirty) && 
-      !quotationForm.controls['expireDate'].valid">
-<div class="error-message" *ngIf="quotationForm.controls['expireDate'].errors?.required">
-Please enter expireDate
-</div>
-</div>
+     
+
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['expireDate'].touched || 
+    quotationForm.controls['expireDate'].dirty) && 
+    !quotationForm.controls['expireDate'].valid">
+    <div class="error-message" *ngIf="quotationForm.controls['expireDate'].errors?.required">
+      Please enter expireDate
+    </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">Payment Term</ion-label>
       <ion-select formControlName="paymentTerm">
@@ -69,25 +75,28 @@ Please enter expireDate
         <ion-select-option value="60">Credit 60 days</ion-select-option>
         <ion-select-option value="90">Credit 90 days</ion-select-option>
       </ion-select>
-      <div class="validation-errors" *ngIf="(quotationForm.controls['paymentTerm'].touched || 
-      quotationForm.controls['paymentTerm'].dirty) && 
-     (!quotationForm.controls['paymentTerm'].valid || quotationForm.controls['paymentTerm'].value)">
-<div class="error-message" *ngIf="quotationForm.controls['paymentTerm'].errors?.required || quotationForm.controls['paymentTerm'].value==0">
-Please Select paymentTerm
-</div>
-</div>
+
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['paymentTerm'].touched || 
+      quotationForm.controls['paymentTerm'].dirty) && 
+     (!quotationForm.controls['paymentTerm'].valid || quotationForm.controls['paymentTerm'].value==0)">
+      <div class="error-message"
+        *ngIf="quotationForm.controls['paymentTerm'].errors?.required || quotationForm.controls['paymentTerm'].value==0">
+        Please Select paymentTerm
+      </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">Reference No.</ion-label>
       <ion-input type="text" formControlName="referenceNo"></ion-input>
-      <div class="validation-errors" *ngIf="(quotationForm.controls['expireDate'].touched || 
-      quotationForm.controls['expireDate'].dirty) && 
-      !quotationForm.controls['expireDate'].valid">
-<div class="error-message" *ngIf="quotationForm.controls['expireDate'].errors?.required">
-Please enter expireDate
-</div>
-</div>
+
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['referenceNo'].touched || 
+      quotationForm.controls['referenceNo'].dirty) && 
+      !quotationForm.controls['referenceNo'].valid">
+      <div class="error-message" *ngIf="quotationForm.controls['referenceNo'].errors?.required">
+        Please enter referenceNo
+      </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">PIC</ion-label>
       <ion-select formControlName="pic">
@@ -95,14 +104,16 @@ Please enter expireDate
         <ion-select-option value="biggy">Biggy Nuttapon</ion-select-option>
         <ion-select-option value="sales">Sales</ion-select-option>
       </ion-select>
-      <div class="validation-errors" *ngIf="(quotationForm.controls['pic'].touched || 
-      quotationForm.controls['pic'].dirty) && 
-     (!quotationForm.controls['pic'].valid || quotationForm.controls['pic'].value)">
-<div class="error-message" *ngIf="quotationForm.controls['pic'].errors?.required || quotationForm.controls['pic'].value==0">
-Please Select pic
-</div>
-</div>
+
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['pic'].touched || 
+    quotationForm.controls['pic'].dirty) && 
+   (!quotationForm.controls['pic'].valid || quotationForm.controls['pic'].value==0)">
+      <div class="error-message"
+        *ngIf="quotationForm.controls['pic'].errors?.required || quotationForm.controls['pic'].value==0">
+        Please Select pic
+      </div>
+    </div>
     <h3 padding>Quotation Line</h3>
     <div formArrayName="quotationItems" *ngFor="let item of quotationLines.controls; let i=index">
       <div class="form-group p-b-10" [formGroupName]="i">
@@ -113,34 +124,84 @@ Please Select pic
             <ion-select-option *ngFor="let prod of products" [value]="prod.productId">{{ prod.productName }}
             </ion-select-option>
           </ion-select>
+
         </ion-item>
+        <div class="validation-errors" *ngIf="(item.controls['productId'].touched || 
+        item.controls['productId'].dirty) && 
+       (!item.controls['productId'].valid || item.controls['productId'].value==0)">
+          <div class="error-message"
+            *ngIf="item.controls['productId'].errors?.required || item.controls['productId'].value==0">
+            Please Select Product
+          </div>
+        </div>
+
         <ion-item>
           <ion-label color="primary">Product Name</ion-label>
           <ion-input type="number" formControlName="productName" class="form-control ion-text-right"
             (change)="calculateLineTotal(item)"></ion-input>
         </ion-item>
+        <div class="validation-errors" *ngIf="(item.controls['productName'].touched || 
+        item.controls['productName'].dirty) && 
+       (!item.controls['productName'].valid)">
+          <div class="error-message"
+            *ngIf="item.controls['productName'].errors?.required || item.controls['productName'].value==0">
+            Please Input Product Name
+          </div>
+        </div>
         <ion-item>
           <ion-label color="primary">Qty</ion-label>
           <ion-input type="number" formControlName="qty" class="form-control ion-text-right"
             (change)="calculateLineTotal(item)"></ion-input>
         </ion-item>
+        <div class="validation-errors" *ngIf="(item.controls['qty'].touched || 
+        item.controls['qty'].dirty) && 
+       (!item.controls['qty'].valid || item.controls['qty'].value==0)">
+          <div class="error-message" *ngIf="item.controls['qty'].errors?.required || item.controls['qty'].value==0">
+            Please Input Qty
+          </div>
+        </div>
         <ion-item>
           <ion-label color="primary">Unit Price</ion-label>
           <ion-input type="number" formControlName="unitPrice" class="form-control ion-text-right"
             (change)="calculateLineTotal(item)"></ion-input>
         </ion-item>
+        <div class="validation-errors" *ngIf="(item.controls['unitPrice'].touched || 
+        item.controls['unitPrice'].dirty) && 
+       (!item.controls['unitPrice'].valid || item.controls['unitPrice'].value==0)">
+          <div class="error-message"
+            *ngIf="item.controls['unitPrice'].errors?.required || item.controls['unitPrice'].value==0">
+            Please Input Unit Price
+          </div>
+        </div>
         <ion-item>
           <ion-label color="primary">Discount</ion-label>
           <ion-input type="number" formControlName="discount" class="form-control ion-text-right"
             (change)="calculateLineTotal(item)"></ion-input>
         </ion-item>
+        <div class="validation-errors" *ngIf="(item.controls['discount'].touched || 
+        item.controls['discount'].dirty) && 
+       (!item.controls['discount'].valid || item.controls['discount'].value==0)">
+          <div class="error-message"
+            *ngIf="item.controls['discount'].errors?.required || item.controls['discount'].value==0">
+            Please Input Discount
+          </div>
+        </div>
         <ion-item>
           <ion-label color="primary">Line Total</ion-label>
           <ion-input type="number" formControlName="lineTotal" class="form-control ion-text-right"></ion-input>
         </ion-item>
+        <div class="validation-errors" *ngIf="(item.controls['lineTotal'].touched || 
+        item.controls['lineTotal'].dirty) && 
+       (!item.controls['lineTotal'].valid || item.controls['lineTotal'].value==0)">
+          <div class="error-message"
+            *ngIf="item.controls['lineTotal'].errors?.required || item.controls['lineTotal'].value==0">
+            Please Input Line Total
+          </div>
+        </div>
         <ion-button expand="block" color="danger" (click)="removeItem(i)">
           <ion-icon name="trash"></ion-icon>
-          Delete</ion-button>
+          Delete
+        </ion-button>
       </div>
     </div>
     <ion-button color="success" type="button" (click)="addItem()">
@@ -150,17 +211,45 @@ Please Select pic
       <ion-label position="floating" color="primary">Subtotal</ion-label>
       <ion-input type="number" class="ion-text-right" readonly formControlName="subtotal"></ion-input>
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['subtotal'].touched || 
+    quotationForm.controls['subtotal'].dirty) && 
+    !quotationForm.controls['subtotal'].valid">
+    <div class="error-message" *ngIf="quotationForm.controls['subtotal'].errors?.required">
+      Please enter subtotal
+    </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">Other Charges</ion-label>
       <ion-input type="number" text-right formControlName="otherCharges"></ion-input>
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['otherCharges'].touched || 
+    quotationForm.controls['otherCharges'].dirty) && 
+    !quotationForm.controls['otherCharges'].valid">
+    <div class="error-message" *ngIf="quotationForm.controls['otherCharges'].errors?.required">
+      Please enter otherCharges
+    </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">VAT</ion-label>
       <ion-input type="number" text-right readonly formControlName="vat"></ion-input>
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['vat'].touched || 
+    quotationForm.controls['vat'].dirty) && 
+    !quotationForm.controls['vat'].valid">
+    <div class="error-message" *ngIf="quotationForm.controls['vat'].errors?.required">
+      Please enter vat
+    </div>
+    </div>
     <ion-item>
       <ion-label position="floating" color="primary">Grand Total</ion-label>
       <ion-input type="number" text-right readonly formControlName="grandTotal"></ion-input>
     </ion-item>
+    <div class="validation-errors" *ngIf="(quotationForm.controls['grandTotal'].touched || 
+    quotationForm.controls['grandTotal'].dirty) && 
+    !quotationForm.controls['grandTotal'].valid">
+    <div class="error-message" *ngIf="quotationForm.controls['grandTotal'].errors?.required">
+      Please enter grandTotal
+    </div>
+    </div>
   </form>
 </ion-content>

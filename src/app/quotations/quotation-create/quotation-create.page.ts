@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class QuotationCreatePage implements OnInit {
 
   quotationForm: FormGroup;
-  products: [{productId: 0, productName: 'Select'},{productId: 1, productName: 'prod-1'}, {productId: 2, productName: 'prod-2'}];
+  products: any[] =  [{productId: 0, productName: 'Select'},{productId: 1, productName: 'prod-1'}, {productId: 2, productName: 'prod-2'}];
 
   // Property
   get quotationLines(): FormArray {
