@@ -1,5 +1,6 @@
 import { FormBuilder, FormGroup, Validators, ValidatorFn, FormArray, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quotation-create',
@@ -16,11 +17,15 @@ export class QuotationCreatePage implements OnInit {
     return this.quotationForm.get('quotationItems') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit() {
     this.createForm();
     console.log("ngOnInit")
+  }
+  Save(){
+    this.router.navigateByUrl('/app/quotations/view');
   }
   createForm() {
     this.quotationForm = this.fb.group({
