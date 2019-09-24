@@ -31,7 +31,7 @@ export class QuotationCreatePage implements OnInit {
     this.quotationForm = this.fb.group({
       quotationNo: ['', Validators.required],
       quotationDate: ['', Validators.required],
-      customer: ['0', Validators.required],
+      customer: ['0', Validators.compose([Validators.required, Validators.min(1)]) ],
       expireDate: ['', Validators.required],
       paymentTerm: '0',
       referenceNo: '',
@@ -46,7 +46,7 @@ export class QuotationCreatePage implements OnInit {
   }
   createQuotationItems(): FormGroup {
     return this.fb.group({
-      productId: [0, Validators.required],
+      productId: [0, Validators.compose([Validators.required, Validators.min(1)]) ],
       productName: ['', Validators.required],
       qty: [0, Validators.required],
       unitPrice: [0, Validators.required],

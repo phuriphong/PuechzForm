@@ -33,11 +33,12 @@
       </ion-select>
 
     </ion-item>
+    {{quotationForm.controls['customer'].valid }}
     <div class="validation-errors" *ngIf="(quotationForm.controls['customer'].touched || 
       quotationForm.controls['customer'].dirty) && 
-     (!quotationForm.controls['customer'].valid || quotationForm.controls['customer'].value==0)">
+     (!quotationForm.controls['customer'].valid )">
       <div class="error-message"
-        *ngIf="quotationForm.controls['customer'].errors?.required || quotationForm.controls['customer'].value==0">
+        *ngIf="quotationForm.controls['customer'].errors?.required ">
         Please Select customer
       </div>
     </div>
@@ -79,9 +80,9 @@
     </ion-item>
     <div class="validation-errors" *ngIf="(quotationForm.controls['paymentTerm'].touched || 
       quotationForm.controls['paymentTerm'].dirty) && 
-     (!quotationForm.controls['paymentTerm'].valid || quotationForm.controls['paymentTerm'].value==0)">
+     (!quotationForm.controls['paymentTerm'].valid)">
       <div class="error-message"
-        *ngIf="quotationForm.controls['paymentTerm'].errors?.required || quotationForm.controls['paymentTerm'].value==0">
+        *ngIf="quotationForm.controls['paymentTerm'].errors?.required ">
         Please Select paymentTerm
       </div>
     </div>
@@ -108,9 +109,9 @@
     </ion-item>
     <div class="validation-errors" *ngIf="(quotationForm.controls['pic'].touched || 
     quotationForm.controls['pic'].dirty) && 
-   (!quotationForm.controls['pic'].valid || quotationForm.controls['pic'].value==0)">
+   (!quotationForm.controls['pic'].valid )">
       <div class="error-message"
-        *ngIf="quotationForm.controls['pic'].errors?.required || quotationForm.controls['pic'].value==0">
+        *ngIf="quotationForm.controls['pic'].errors?.required ">
         Please Select pic
       </div>
     </div>
@@ -128,9 +129,9 @@
         </ion-item>
         <div class="validation-errors" *ngIf="(item.controls['productId'].touched || 
         item.controls['productId'].dirty) && 
-       (!item.controls['productId'].valid || item.controls['productId'].value==0)">
+       (!item.controls['productId'].valid )">
           <div class="error-message"
-            *ngIf="item.controls['productId'].errors?.required || item.controls['productId'].value==0">
+            *ngIf="item.controls['productId'].errors?.required">
             Please Select Product
           </div>
         </div>
@@ -144,7 +145,7 @@
         item.controls['productName'].dirty) && 
        (!item.controls['productName'].valid)">
           <div class="error-message"
-            *ngIf="item.controls['productName'].errors?.required || item.controls['productName'].value==0">
+            *ngIf="item.controls['productName'].errors?.required">
             Please Input Product Name
           </div>
         </div>
@@ -155,8 +156,8 @@
         </ion-item>
         <div class="validation-errors" *ngIf="(item.controls['qty'].touched || 
         item.controls['qty'].dirty) && 
-       (!item.controls['qty'].valid || item.controls['qty'].value==0)">
-          <div class="error-message" *ngIf="item.controls['qty'].errors?.required || item.controls['qty'].value==0">
+       (!item.controls['qty'].valid">
+          <div class="error-message" *ngIf="item.controls['qty'].errors?.required">
             Please Input Qty
           </div>
         </div>
@@ -167,9 +168,9 @@
         </ion-item>
         <div class="validation-errors" *ngIf="(item.controls['unitPrice'].touched || 
         item.controls['unitPrice'].dirty) && 
-       (!item.controls['unitPrice'].valid || item.controls['unitPrice'].value==0)">
+       (!item.controls['unitPrice'].valid )">
           <div class="error-message"
-            *ngIf="item.controls['unitPrice'].errors?.required || item.controls['unitPrice'].value==0">
+            *ngIf="item.controls['unitPrice'].errors?.required">
             Please Input Unit Price
           </div>
         </div>
@@ -180,9 +181,9 @@
         </ion-item>
         <div class="validation-errors" *ngIf="(item.controls['discount'].touched || 
         item.controls['discount'].dirty) && 
-       (!item.controls['discount'].valid || item.controls['discount'].value==0)">
+       (!item.controls['discount'].valid)">
           <div class="error-message"
-            *ngIf="item.controls['discount'].errors?.required || item.controls['discount'].value==0">
+            *ngIf="item.controls['discount'].errors?.required ">
             Please Input Discount
           </div>
         </div>
@@ -192,9 +193,9 @@
         </ion-item>
         <div class="validation-errors" *ngIf="(item.controls['lineTotal'].touched || 
         item.controls['lineTotal'].dirty) && 
-       (!item.controls['lineTotal'].valid || item.controls['lineTotal'].value==0)">
+       (!item.controls['lineTotal'].valid)">
           <div class="error-message"
-            *ngIf="item.controls['lineTotal'].errors?.required || item.controls['lineTotal'].value==0">
+            *ngIf="item.controls['lineTotal'].errors?.required">
             Please Input Line Total
           </div>
         </div>
