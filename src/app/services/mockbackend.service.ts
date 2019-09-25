@@ -56,7 +56,7 @@ export class MockBackendService implements InMemoryDbService {
         subtotal: 0,
         vat: 0,
         discount: 0,
-        grandTotal: 0,
+        grandTotal: 27000,
         quotationItems: [
           {
             id: 1,
@@ -85,11 +85,130 @@ export class MockBackendService implements InMemoryDbService {
             lineTotal: 8400
           }
         ]
+      },
+      {
+        id: 2,
+        quotationNo: 'QUO1909002',
+        quotationDate: '2019-09-15',
+        customerId: 1,
+        remark: null,
+        subtotal: 0,
+        vat: 0,
+        discount: 0,
+        grandTotal: 12000,
+        quotationItems: [
+          {
+            id: 1,
+            quotationId: 1,
+            lineNo: 1,
+            itemId: 3,
+            description: 'Product 3',
+            qty: 100,
+            uom: 'pcs',
+            unitPrice: 100,
+            discount: 0,
+            vatId: 7,
+            lineTotal: 10000
+          },
+          {
+            id: 2,
+            quotationId: 1,
+            lineNo: 2,
+            itemId: 2,
+            description: 'Product 2',
+            qty: 120,
+            uom: 'pcs',
+            unitPrice: 70,
+            discount: 0,
+            vatId: 7,
+            lineTotal: 8400
+          }
+        ]
+      }
+    ];
+    const invoices = [
+      {
+        id: 1,
+        invoiceNo: 'QUO1909001',
+        invoiceDate: '2019-09-12',
+        customerId: 1,
+        remark: null,
+        subtotal: 0,
+        vat: 0,
+        discount: 0,
+        grandTotal: 27000,
+        invoiceItems: [
+          {
+            id: 1,
+            invoiceId: 1,
+            lineNo: 1,
+            itemId: 1,
+            description: 'Product 1',
+            qty: 100,
+            uom: 'pcs',
+            unitPrice: 100,
+            discount: 0,
+            vatId: 7,
+            lineTotal: 10000
+          },
+          {
+            id: 2,
+            invoiceId: 1,
+            lineNo: 2,
+            itemId: 2,
+            description: 'Product 2',
+            qty: 120,
+            uom: 'pcs',
+            unitPrice: 70,
+            discount: 0,
+            vatId: 7,
+            lineTotal: 8400
+          }
+        ]
+      },
+      {
+        id: 2,
+        invoiceNo: 'QUO1909002',
+        invoiceDate: '2019-09-15',
+        customerId: 1,
+        remark: null,
+        subtotal: 0,
+        vat: 0,
+        discount: 0,
+        grandTotal: 12000,
+        invoiceItems: [
+          {
+            id: 1,
+            invoiceId: 1,
+            lineNo: 1,
+            itemId: 3,
+            description: 'Product 3',
+            qty: 100,
+            uom: 'pcs',
+            unitPrice: 100,
+            discount: 0,
+            vatId: 7,
+            lineTotal: 10000
+          },
+          {
+            id: 2,
+            invoiceId: 1,
+            lineNo: 2,
+            itemId: 2,
+            description: 'Product 2',
+            qty: 120,
+            uom: 'pcs',
+            unitPrice: 70,
+            discount: 0,
+            vatId: 7,
+            lineTotal: 8400
+          }
+        ]
       }
     ];
 
     return {
-      quotations, products
+      quotations, products, invoices
     };
   }
 }
