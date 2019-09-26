@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title>invoices-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+<!-- {{invoicesList|json}} -->
+<ion-fab vertical="bottom" horizontal="end" edge slot="fixed">
+    <ion-fab-button [routerLink]="['/app/invoices/create']" [routerLinkActive]="'active'" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let i of invoicesList" (click)="View(i)">
+      <h4>{{ i.invoiceNo }}</h4>
+      <p>
+      <ion-label>{{ i.invoiceNo }}</ion-label>
+      <ion-label class="ion-text-right">{{ i.grandTotal | number }}</ion-label>
+    </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

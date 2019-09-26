@@ -12,7 +12,7 @@
   </ion-fab>
 
   <ion-list>
-    <ion-item *ngFor="let q of QuotationsList">
+    <ion-item *ngFor="let q of QuotationsList" (click)="View(q)">
       <h4>{{ q.quotationNo }}</h4>
       <p>
       <ion-label>{{ q.quotationNo }}</ion-label>

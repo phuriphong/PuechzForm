@@ -1,0 +1,262 @@
+  <ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/app/invoices/list"></ion-back-button>
+        </ion-buttons>
+    <ion-title>invoices-create</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content>
+     <form [formGroup]="InvoiceForm" (ngSubmit)="submit()">
+     <ion-item>
+        <ion-label position="floating" color="primary">invoice No.</ion-label>
+        <ion-input type="text" formControlName="invoiceNo"></ion-input>
+  
+      </ion-item>
+        
+      <div class="validation-errors" *ngIf="(InvoiceForm.controls['invoiceNo'].touched || 
+      InvoiceForm.controls['invoiceNo'].dirty) && 
+                                            !InvoiceForm.controls['invoiceNo'].valid">
+        <div class="error-message" *ngIf="InvoiceForm.controls['invoiceNo'].errors?.required">
+          Please enter invoice No
+        </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Customer</ion-label>
+        <ion-select formControlName="customerId">
+          <ion-select-option value="0">Select</ion-select-option>
+          <ion-select-option value="1">Customer-1</ion-select-option>
+          <ion-select-option value="2">Customer-2</ion-select-option>
+          <ion-select-option value="3">Customer-3</ion-select-option>
+          <ion-select-option value="4">Customer-4</ion-select-option>
+          <ion-select-option value="5">Customer-5</ion-select-option>
+        </ion-select>
+  
+      </ion-item>
+     
+      <div class="validation-errors" *ngIf="(InvoiceForm.controls['customerId'].touched || 
+      InvoiceForm.controls['customerId'].dirty) && 
+       (!InvoiceForm.controls['customerId'].valid )">
+        <div class="error-message"
+          *ngIf="InvoiceForm.controls['customerId'].errors?.required ">
+          Please Select customer
+        </div>
+      </div>
+      <!--
+      <ion-item>
+        <ion-label position="floating" color="primary">invoice Date</ion-label>
+        <ion-datetime formControlName="invoiceDate" displayFormat="DD/MM/YYYY" min="1994-03-14" max="2012-12-09">
+  
+        </ion-datetime>
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['invoiceDate'].touched || 
+      invoiceForm.controls['invoiceDate'].dirty) && 
+      !invoiceForm.controls['invoiceDate'].valid">
+        <div class="error-message" *ngIf="invoiceForm.controls['invoiceDate'].errors?.required">
+          Please enter invoice Date
+        </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Expire Date</ion-label>
+        <ion-datetime formControlName="expireDate" displayFormat="DD/MM/YYYY"></ion-datetime>
+       
+  
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['expireDate'].touched || 
+      invoiceForm.controls['expireDate'].dirty) && 
+      !invoiceForm.controls['expireDate'].valid">
+      <div class="error-message" *ngIf="invoiceForm.controls['expireDate'].errors?.required">
+        Please enter expireDate
+      </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Payment Term</ion-label>
+        <ion-select formControlName="paymentTerm">
+          <ion-select-option value="0">Select</ion-select-option>
+          <ion-select-option value="30">Credit 30 days</ion-select-option>
+          <ion-select-option value="60">Credit 60 days</ion-select-option>
+          <ion-select-option value="90">Credit 90 days</ion-select-option>
+        </ion-select>
+  
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['paymentTerm'].touched || 
+        invoiceForm.controls['paymentTerm'].dirty) && 
+       (!invoiceForm.controls['paymentTerm'].valid)">
+        <div class="error-message"
+          *ngIf="invoiceForm.controls['paymentTerm'].errors?.required ">
+          Please Select paymentTerm
+        </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Reference No.</ion-label>
+        <ion-input type="text" formControlName="referenceNo"></ion-input>
+  
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['referenceNo'].touched || 
+        invoiceForm.controls['referenceNo'].dirty) && 
+        !invoiceForm.controls['referenceNo'].valid">
+        <div class="error-message" *ngIf="invoiceForm.controls['referenceNo'].errors?.required">
+          Please enter referenceNo
+        </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">PIC</ion-label>
+        <ion-select formControlName="pic">
+          <ion-select-option value="0">Select</ion-select-option>
+          <ion-select-option value="biggy">Biggy Nuttapon</ion-select-option>
+          <ion-select-option value="sales">Sales</ion-select-option>
+        </ion-select>
+  
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['pic'].touched || 
+      invoiceForm.controls['pic'].dirty) && 
+     (!invoiceForm.controls['pic'].valid )">
+        <div class="error-message"
+          *ngIf="invoiceForm.controls['pic'].errors?.required ">
+          Please Select pic
+        </div>
+      </div>-->
+      <h3 padding>invoice Line</h3>
+      <div formArrayName="invoiceItems" *ngFor="let item of invoiceLines.controls; let i=index">
+        <div class="form-group p-b-10" [formGroupName]="i">
+          <ion-item>
+            <ion-label color="primary">itemId</ion-label>
+            <ion-select formControlName="itemId" class="form-control" placeholder="Select Product" #ps
+              (change)="GetProductInfo(ps, item)">
+              <ion-select-option *ngFor="let prod of products" [value]="prod.itemId">{{ prod.productId }}
+              </ion-select-option>
+            </ion-select>
+  
+          </ion-item>
+          <div class="validation-errors" *ngIf="(item.controls['itemId'].touched || 
+          item.controls['itemId'].dirty) && 
+         (!item.controls['itemId'].valid )">
+            <div class="error-message"
+              *ngIf="item.controls['itemId'].errors?.required">
+              Please Select Item
+            </div>
+          </div>
+ 
+          <ion-item>
+            <ion-label color="primary">Description</ion-label>
+            <ion-input type="number" formControlName="description" class="form-control ion-text-right"
+              (change)="calculateLineTotal(item)"></ion-input>
+          </ion-item>
+          <div class="validation-errors" *ngIf="(item.controls['description'].touched || 
+          item.controls['description'].dirty) && 
+         (!item.controls['description'].valid)">
+            <div class="error-message"
+              *ngIf="item.controls['description'].errors?.required">
+              Please Input Description
+            </div>
+          </div>
+          <ion-item>
+            <ion-label color="primary">Qty</ion-label>
+            <ion-input type="number" formControlName="qty" class="form-control ion-text-right"
+              (change)="calculateLineTotal(item)"></ion-input>
+          </ion-item>
+          <div class="validation-errors" *ngIf="(item.controls['qty'].touched || 
+          item.controls['qty'].dirty) && 
+         (!item.controls['qty'].valid)">
+            <div class="error-message" *ngIf="item.controls['qty'].errors?.required">
+              Please Input Qty
+            </div>
+          </div>
+          <ion-item>
+            <ion-label color="primary">uom</ion-label>
+            <ion-input type="text" formControlName="uom" class="form-control ion-text-right"
+             ></ion-input>
+          </ion-item>
+          <div class="validation-errors" *ngIf="(item.controls['uom'].touched || 
+          item.controls['uom'].dirty) && 
+         (!item.controls['uom'].valid )">
+            <div class="error-message"
+              *ngIf="item.controls['uom'].errors?.required">
+              Please Input uom
+            </div>
+          </div>
+          <ion-item>
+            <ion-label color="primary">vatId</ion-label>
+            <ion-input type="number" formControlName="vatId" class="form-control ion-text-right"
+              (change)="calculateLineTotal(item)"></ion-input>
+          </ion-item>
+          <div class="validation-errors" *ngIf="(item.controls['vatId'].touched || 
+          item.controls['vatId'].dirty) && 
+         (!item.controls['vatId'].valid)">
+            <div class="error-message"
+              *ngIf="item.controls['vatId'].errors?.required ">
+              Please Input vatId
+            </div>
+          </div>
+          <ion-item>
+            <ion-label color="primary">Line Total</ion-label>
+            <ion-input type="number" formControlName="lineTotal" class="form-control ion-text-right"></ion-input>
+          </ion-item>
+          <div class="validation-errors" *ngIf="(item.controls['lineTotal'].touched || 
+          item.controls['lineTotal'].dirty) && 
+         (!item.controls['lineTotal'].valid)">
+            <div class="error-message"
+              *ngIf="item.controls['lineTotal'].errors?.required">
+              Please Input Line Total
+            </div>
+          </div>
+          <ion-button expand="block" color="danger" (click)="removeItem(i)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </ion-button>
+        </div>
+      </div>
+     
+      <ion-button color="success" type="button" (click)="addItem()">
+        <ion-icon slot="end" name="add-circle"></ion-icon>Add Item
+      </ion-button>
+       <!--<ion-item>
+        <ion-label position="floating" color="primary">Subtotal</ion-label>
+        <ion-input type="number" class="ion-text-right" readonly formControlName="subtotal"></ion-input>
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['subtotal'].touched || 
+      invoiceForm.controls['subtotal'].dirty) && 
+      !invoiceForm.controls['subtotal'].valid">
+      <div class="error-message" *ngIf="invoiceForm.controls['subtotal'].errors?.required">
+        Please enter subtotal
+      </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Other Charges</ion-label>
+        <ion-input type="number" text-right formControlName="otherCharges"></ion-input>
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['otherCharges'].touched || 
+      invoiceForm.controls['otherCharges'].dirty) && 
+      !invoiceForm.controls['otherCharges'].valid">
+      <div class="error-message" *ngIf="invoiceForm.controls['otherCharges'].errors?.required">
+        Please enter otherCharges
+      </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">VAT</ion-label>
+        <ion-input type="number" text-right readonly formControlName="vat"></ion-input>
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['vat'].touched || 
+      invoiceForm.controls['vat'].dirty) && 
+      !invoiceForm.controls['vat'].valid">
+      <div class="error-message" *ngIf="invoiceForm.controls['vat'].errors?.required">
+        Please enter vat
+      </div>
+      </div>
+      <ion-item>
+        <ion-label position="floating" color="primary">Grand Total</ion-label>
+        <ion-input type="number" text-right readonly formControlName="grandTotal"></ion-input>
+      </ion-item>
+      <div class="validation-errors" *ngIf="(invoiceForm.controls['grandTotal'].touched || 
+      invoiceForm.controls['grandTotal'].dirty) && 
+      !invoiceForm.controls['grandTotal'].valid">
+      <div class="error-message" *ngIf="invoiceForm.controls['grandTotal'].errors?.required">
+        Please enter grandTotal
+      </div>
+      </div> -->
+      <div padding>
+        <ion-button type="button" color="primary" (click)="submit()" [disabled]="InvoiceForm.errors" expand="full">Save</ion-button>
+      </div>
+    </form> 
+  </ion-content>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { QuotationsService } from './../../services/quotations.service';
 import { Component, OnInit } from '@angular/core';
 import { Quotation } from './../../models/quotation';
@@ -9,7 +10,7 @@ import { Quotation } from './../../models/quotation';
 })
 export class QuotationListPage implements OnInit {
 
-  constructor(private quotationsService:QuotationsService) { }
+  constructor(private quotationsService:QuotationsService,private router: Router) { }
   QuotationsList:Array<Quotation>
   ngOnInit() {
     this.quotationsService.getQuotations().subscribe(x=>{
@@ -17,5 +18,9 @@ export class QuotationListPage implements OnInit {
       this.QuotationsList=x;
     });
   }
-
+  View(q :Quotation)
+  {
+    console.log(q);
+    this.router.navigate(['/app/quotations/view/', { id:q.id }]);
+  }
 }

@@ -1,4 +1,3 @@
-import { InvoicesRoutingModule } from './invoices.router.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,14 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
+import { InvoicesListPage } from './invoices-list.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: InvoicesListPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InvoicesRoutingModule
+    RouterModule.forChild(routes)
   ],
-  declarations: []
+  declarations: [InvoicesListPage]
 })
-export class InvoicesPageModule {}
+export class InvoicesListPageModule {}
